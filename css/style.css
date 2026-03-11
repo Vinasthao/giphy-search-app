@@ -1,0 +1,12 @@
+/* ---------- RESET ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #0d0d0d;
+  color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+a { color: #ff3cac; text-decoration: none; }
+a:hover { text-decoration: underline; }
