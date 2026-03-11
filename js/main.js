@@ -122,3 +122,36 @@ function updateResultsTitle(searchTerm, count) {
     "Showing <span>" + count + " GIFs</span> for: <span>" + searchTerm + "</span>"
   );
 }
+// ----- DOM READY -----
+$(document).ready(function () {
+  setupHamburger();
+  setupSearchButton();
+  setupEnterKey();
+});
+
+// ----- SEARCH BUTTON CLICK -----
+function setupSearchButton() {
+  $("#search-btn").on("click", function () {
+    runSearch();
+  });
+}
+
+// ----- ENTER KEY SUPPORT -----
+function setupEnterKey() {
+  $("#search-term").on("keydown", function (e) {
+    if (e.key === "Enter") runSearch();
+  });
+}
+
+// ----- MAIN SEARCH FUNCTION -----
+function runSearch() {
+  var searchTerm = getSearchTerm();
+  var gifCount = getGifCount();
+
+  if (!isValidInput(searchTerm, gifCount)) return;
+
+  clearResults();
+  showLoading(true);
+
+  fetchGifs(searchTerm, gifCount);
+}
