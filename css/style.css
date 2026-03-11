@@ -53,6 +53,7 @@ a:hover { text-decoration: underline; }
   gap: 5px;
   cursor: pointer;
 }
+
 .hamburger span {
   width: 24px;
   height: 2px;

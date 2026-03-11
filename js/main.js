@@ -1,10 +1,12 @@
 // ----- CONFIGURATION -----
-const API_KEY = "YOUR_GIPHY_API_KEY_HERE";
+const API_KEY = "GIPHY_API_KEY";
 const BASE_URL = "https://api.giphy.com/v1/gifs/search";
 
 // ----- DOM READY -----
 $(document).ready(function () {
   setupHamburger();
+  setupSearchButton();
+  setupEnterKey();
 });
 
 // ----- HAMBURGER MENU -----
@@ -13,6 +15,34 @@ function setupHamburger() {
     $(".nav-links").toggleClass("open");
   });
 }
+
+// ----- SEARCH BUTTON CLICK -----
+function setupSearchButton() {
+  $("#search-btn").on("click", function () {
+    runSearch();
+  });
+}
+
+// ----- ENTER KEY SUPPORT -----
+function setupEnterKey() {
+  $("#search-term").on("keydown", function (e) {
+    if (e.key === "Enter") runSearch();
+  });
+}
+
+// ----- MAIN SEARCH FUNCTION -----
+function runSearch() {
+  var searchTerm = getSearchTerm();
+  var gifCount = getGifCount();
+
+  if (!isValidInput(searchTerm, gifCount)) return;
+
+  clearResults();
+  showLoading(true);
+
+  fetchGifs(searchTerm, gifCount);
+}
+
 // ----- GET SEARCH TERM -----
 function getSearchTerm() {
   return $("#search-term").val().trim();
@@ -35,31 +65,6 @@ function isValidInput(term, count) {
   }
   clearError();
   return true;
-}
-
-// ----- SHOW ERROR -----
-function showError(message) {
-  $("#error-msg").text(message);
-}
-
-// ----- CLEAR ERROR -----
-function clearError() {
-  $("#error-msg").text("");
-}
-
-// ----- SHOW / HIDE LOADING -----
-function showLoading(visible) {
-  if (visible) {
-    $("#loading").removeClass("hidden");
-  } else {
-    $("#loading").addClass("hidden");
-  }
-}
-
-// ----- CLEAR RESULTS -----
-function clearResults() {
-  $("#gif-container").empty();
-  $("#results-title").empty();
 }
 
 // ----- FETCH GIFS FROM GIPHY -----
@@ -122,36 +127,28 @@ function updateResultsTitle(searchTerm, count) {
     "Showing <span>" + count + " GIFs</span> for: <span>" + searchTerm + "</span>"
   );
 }
-// ----- DOM READY -----
-$(document).ready(function () {
-  setupHamburger();
-  setupSearchButton();
-  setupEnterKey();
-});
 
-// ----- SEARCH BUTTON CLICK -----
-function setupSearchButton() {
-  $("#search-btn").on("click", function () {
-    runSearch();
-  });
+// ----- SHOW ERROR -----
+function showError(message) {
+  $("#error-msg").text(message);
 }
 
-// ----- ENTER KEY SUPPORT -----
-function setupEnterKey() {
-  $("#search-term").on("keydown", function (e) {
-    if (e.key === "Enter") runSearch();
-  });
+// ----- CLEAR ERROR -----
+function clearError() {
+  $("#error-msg").text("");
 }
 
-// ----- MAIN SEARCH FUNCTION -----
-function runSearch() {
-  var searchTerm = getSearchTerm();
-  var gifCount = getGifCount();
+// ----- SHOW / HIDE LOADING -----
+function showLoading(visible) {
+  if (visible) {
+    $("#loading").removeClass("hidden");
+  } else {
+    $("#loading").addClass("hidden");
+  }
+}
 
-  if (!isValidInput(searchTerm, gifCount)) return;
-
-  clearResults();
-  showLoading(true);
-
-  fetchGifs(searchTerm, gifCount);
+// ----- CLEAR RESULTS -----
+function clearResults() {
+  $("#gif-container").empty();
+  $("#results-title").empty();
 }
