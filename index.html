@@ -19,6 +19,26 @@
       <span></span><span></span><span></span>
     </div>
   </nav>
+  <section class="hero" id="search-section">
+    <div class="hero-content">
+      <h1>Find Any GIF<br/><span>Instantly</span></h1>
+      <p class="tagline">Search millions of GIFs powered by Giphy</p>
+
+      <div class="search-form">
+        <div class="input-group">
+          <label for="search-term">Search Keyword</label>
+          <input type="text" id="search-term" placeholder="e.g. cats, simpsons, happy..." />
+        </div>
+        <div class="input-group small">
+          <label for="gif-count">No. of GIFs</label>
+          <input type="number" id="gif-count" value="12" min="1" max="50" />
+        </div>
+        <button id="search-btn">Search</button>
+      </div>
+
+      <div id="error-msg" class="error-msg"></div>
+    </div>
+  </section>
 
   <script src="js/main.js"></script>
 </body>
