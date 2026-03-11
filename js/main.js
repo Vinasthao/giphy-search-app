@@ -1,5 +1,5 @@
 // ----- CONFIGURATION -----
-const API_KEY = "GIPHY_API_KEY";
+const API_KEY = "ihOyg4HCcWBGR97K22YuPZ25eXzQ2vP0";
 const BASE_URL = "https://api.giphy.com/v1/gifs/search";
 
 // ----- DOM READY -----
