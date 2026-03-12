@@ -1,0 +1,7 @@
+As a user, I want to type a keyword into a search box, so that I can find GIFs related to a topic I'm interested in.
+As a user, I want to choose how many GIFs appear, so that I can control the number of results shown on the page.
+As a user, I want to click a search button to trigger the search, so that GIFs are loaded onto the page.
+As a user, I want to see my results displayed as images in a grid, so that I can browse them visually.
+As a user, I want the app to work on my phone, so that I can use it on any device wherever I am.
+As a user, I want a navigation bar with links, so that I can easily jump to different sections of the page.
+As a user, I want to see a clear error message if my search fails or is empty, so that I know what went wrong.

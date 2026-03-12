@@ -3,7 +3,7 @@
 **A fast, minimal GIF search engine powered by the Giphy API**
 
 ---
-
+--- Name
 ##  Vinasthao
 
 
